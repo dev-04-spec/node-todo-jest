@@ -4,13 +4,16 @@
   "description": "Node JS Test Driven",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js",
+    "test": "jest --watchAll"
   },
   "author": "Manoj Kale",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
   }
 }
