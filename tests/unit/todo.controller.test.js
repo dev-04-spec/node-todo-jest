@@ -37,7 +37,8 @@ describe('TodoController.getTodoById',()=>{
     await TodoController.getTodoById(req,res,next);
     expect(next).toHaveBeenCalledWith(errorMessage)
 
-  })
+  });
+ 
 })
 describe("TodoController.getTodos",()=>{
 
@@ -65,8 +66,12 @@ describe("TodoController.getTodos",()=>{
     await TodoController.getTodos(req,res,next);
     expect(next).toHaveBeenCalledWith(errorMessage);
   });
-
-
+  it("Should return 404 when item doesn't exist",async()=>{
+    TodoModel.findById.mockReturnValue(null);
+    await TodoController.getTodoById(req,res,next);
+    expect(res.statusCode).toBe(404);
+    expect(res._isEndCalled()).toBeTruthy();
+  });
 });
 
 describe("TodoController.createTodo", () => {
